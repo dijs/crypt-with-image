@@ -41,15 +41,16 @@ class App extends Component {
           <h2>Encryption using images as the key</h2>
         </div>
         <div className="App-body">
-          <h3>Select an image</h3>
-          <input type="file" accept="image/*" onChange={this.handleImage.bind(this)} />
+          <h3><span className="number">1</span>Select an image</h3>
+          <input id="file" name="file" type="file" accept="image/*" onChange={this.handleImage.bind(this)} />
+          <label htmlFor="file">Choose Image</label>
           <canvas id="canvas" />
           {
             this.state.imagePreviewUrl && <img src={this.state.imagePreviewUrl} className="preview" alt="preview" />
           }
-          <h3>Enter message or ciphertext</h3>
+          <h3><span className="number">2</span>Enter message or ciphertext</h3>
           <textarea ref={el => this.message1 = el} />
-          <h3>Select encrypt or decrypt</h3>
+          <h3><span className="number">3</span>Select encrypt or decrypt</h3>
           <button onClick={() => this.message2.value = encrypt(this.message1.value, this.state.keys)}>Encrypt</button>
           <span className="or"> OR </span>
           <button onClick={() => this.message2.value = decrypt(this.message1.value, this.state.keys)}>Decrypt</button>
